@@ -74,6 +74,9 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+	
+})
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     arthur,
