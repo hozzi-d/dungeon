@@ -2,7 +2,9 @@
     "name": "dungeon",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.1",
+        "storyboard": "*"
     },
     "files": [
         "main.blocks",
