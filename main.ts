@@ -556,8 +556,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         ........................
         ........................
         `, SpriteKind.Projectile)
-    ghost.destroy(effects.halo, 500)
-    info.changeLifeBy(-1)
+    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, arthur).destroy(effects.halo, 1000)
 })
 let ghost3: Sprite = null
 let ghost2: Sprite = null
