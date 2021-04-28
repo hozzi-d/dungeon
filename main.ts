@@ -250,25 +250,34 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
-controller.A.onEvent(ControllerButtonEvent.Released, function () {
-    pro_1 = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . 2 c b a c 2 . . . . . 
-        . . . . c c b c f a c . . . . . 
-        . . 2 . a f b b b a c 2 . . . . 
-        . 2 2 . a f f b a f c c . . . . 
-        . . . . c b b a f f c . . . . . 
-        . . . 2 . b b a f a 2 . . . . . 
-        . 2 . . . 2 c b b . . . . . . . 
-        . . . 2 . . . . 2 . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, arthur, -100, 50)
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    ghost = sprites.create(img`
+        ........................
+        ........................
+        ........................
+        ........................
+        ........................
+        ..........ffff..........
+        ........ff1111ff........
+        .......fb111111bf.......
+        .......f11111111f.......
+        ......fd11111111df......
+        ....7.fd11111111df......
+        ...7..fd11111111df......
+        ...7..fd11111111df......
+        ...7..fddd1111dddff.....
+        ...77.fbdbfddfbdbfcf....
+        ...777fcdcf11fcdcfbf....
+        ....77fffbdb1bdffcf.....
+        ....fcb1bcffffff........
+        ....f1c1c1ffffff........
+        ....fdfdfdfffff.........
+        .....f.f.f..............
+        ........................
+        ........................
+        ........................
+        `, SpriteKind.Projectile)
+    info.changeLifeBy(-1)
 })
 function random_ghost () {
     ghost = sprites.create(img`
@@ -407,6 +416,26 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+controller.B.onEvent(ControllerButtonEvent.Released, function () {
+    pro_1 = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 2 . . . . . . . . 
+        . . . . . 2 c b a c 2 . . . . . 
+        . . . . c c b c f a c . . . . . 
+        . . 2 . a f b b b a c 2 . . . . 
+        . 2 2 . a f f b a f c c . . . . 
+        . . . . c b b a f f c . . . . . 
+        . . . 2 . b b a f a 2 . . . . . 
+        . 2 . . . 2 c b b . . . . . . . 
+        . . . 2 . . . . 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, arthur, -100, 50)
+})
 function random_ghost3 () {
     ghost3 = sprites.create(img`
         ........................
@@ -437,14 +466,14 @@ function random_ghost3 () {
     ghost3.setVelocity(50, 50)
     tiles.placeOnTile(ghost3, tiles.getTileLocation(26, 35))
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
-    info.changeLifeBy(-1)
+    info.changeScoreBy(1)
 })
 let ghost3: Sprite = null
+let pro_1: Sprite = null
 let ghost2: Sprite = null
 let ghost: Sprite = null
-let pro_1: Sprite = null
 let arthur: Sprite = null
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -578,6 +607,7 @@ random_ghost()
 random_ghost3()
 set_arthur()
 info.setLife(5)
+info.setScore(0)
 game.onUpdate(function () {
     if (ghost3.isHittingTile(CollisionDirection.Bottom)) {
         ghost3.vx += 50
