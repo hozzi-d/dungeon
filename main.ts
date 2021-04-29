@@ -225,6 +225,7 @@ function random_ghost16 () {
     tiles.placeOnTile(ghost, tiles.getTileLocation(25, 27))
 }
 function set_arthur () {
+    info.setLife(5)
     arthur = sprites.create(img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -247,6 +248,11 @@ function set_arthur () {
     controller.moveSprite(arthur)
     scene.cameraFollowSprite(arthur)
     tiles.placeOnRandomTile(arthur, assets.tile`myTile1`)
+    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+    statusbar.value = 5
+    statusbar.setBarBorder(1, 15)
+    status_bar_list = statusbars.allOfKind(StatusBarKind.Health)
+    statusbar.attachToSprite(arthur, 0, 0)
 }
 function random_ghost18 () {
     ghost = sprites.create(img`
@@ -504,6 +510,26 @@ function random_ghost20 () {
     ghost.setVelocity(50, 50)
     tiles.placeOnTile(ghost, tiles.getTileLocation(25, 27))
 }
+controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
+    pro_1 = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 2 . . . . . . . . 
+        . . . . . 2 c b a c 2 . . . . . 
+        . . . . c c b c f a c . . . . . 
+        . . 2 . a f b b b a c 2 . . . . 
+        . 2 2 . a f f b a f c c . . . . 
+        . . . . c b b a f f c . . . . . 
+        . . . 2 . b b a f a 2 . . . . . 
+        . 2 . . . 2 c b b . . . . . . . 
+        . . . 2 . . . . 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, arthur, 53, 50)
+})
 function random_ghost9 () {
     ghost9 = sprites.create(img`
         ........................
@@ -698,6 +724,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
         ........................
         `, SpriteKind.Projectile)
     info.changeLifeBy(-1)
+    pause(1000)
 })
 function random_ghost () {
     ghost = sprites.create(img`
@@ -1132,13 +1159,15 @@ function random_ghost25 () {
 let ghost8: Sprite = null
 let ghost3: Sprite = null
 let ghost7: Sprite = null
-let pro_1: Sprite = null
 let ghost2: Sprite = null
 let ghost5: Sprite = null
 let ghost4: Sprite = null
 let ghost11: Sprite = null
 let ghost9: Sprite = null
+let pro_1: Sprite = null
 let ghost10: Sprite = null
+let status_bar_list: StatusBarSprite[] = []
+let statusbar: StatusBarSprite = null
 let arthur: Sprite = null
 let ghost: Sprite = null
 let ghost6: Sprite = null
@@ -1273,7 +1302,6 @@ random_ghost2()
 random_ghost()
 random_ghost3()
 set_arthur()
-info.setLife(1)
 info.setScore(0)
 info.setScore(info.highScore())
 game.onUpdate(function () {
