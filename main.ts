@@ -1,33 +1,3 @@
-function random_ghost26 () {
-    ghost = sprites.create(img`
-        ........................
-        ........................
-        ........................
-        ........................
-        ..........ffff..........
-        ........ff1111ff........
-        .......fb111111bf.......
-        .......f11111111f.......
-        ......fd11111111df......
-        ......fd11111111df......
-        ......fddd1111dddf......
-        ......fbdbfddfbdbf......
-        ......fcdcf11fcdcf......
-        .......fb111111bf.......
-        ......fffcdb1bdffff.....
-        ....fc111cbfbfc111cf....
-        ....f1b1b1ffff1b1b1f....
-        ....fbfbffffffbfbfbf....
-        .........ffffff.........
-        ...........fff..........
-        ........................
-        ........................
-        ........................
-        ........................
-        `, SpriteKind.Enemy)
-    ghost.setVelocity(50, 50)
-    tiles.placeOnTile(ghost, tiles.getTileLocation(25, 27))
-}
 function random_ghost6 () {
     ghost6 = sprites.create(img`
         ........................
@@ -223,6 +193,27 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     false
     )
+})
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    pro_1 = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 2 . . . . . . . . 
+        . . . . . 2 c b a c 2 . . . . . 
+        . . . . c c b c f a c . . . . . 
+        . . 2 . a f b b b a c 2 . . . . 
+        . 2 2 . a f f b a f c c . . . . 
+        . . . . c b b a f f c . . . . . 
+        . . . 2 . b b a f a 2 . . . . . 
+        . 2 . . . 2 c b b . . . . . . . 
+        . . . 2 . . . . 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, arthur, -100, 50)
+    pause(500)
 })
 function random_ghost16 () {
     ghost = sprites.create(img`
@@ -554,6 +545,7 @@ controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, arthur, 53, 50)
+    pause(5000)
 })
 function random_ghost9 () {
     ghost9 = sprites.create(img`
@@ -749,7 +741,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
         ........................
         `, SpriteKind.Projectile)
     info.changeLifeBy(-1)
-    pause(1000)
+    pause(200)
 })
 function random_ghost () {
     ghost = sprites.create(img`
@@ -977,26 +969,6 @@ function random_ghost17 () {
     ghost.setVelocity(50, 50)
     tiles.placeOnTile(ghost, tiles.getTileLocation(25, 27))
 }
-controller.B.onEvent(ControllerButtonEvent.Released, function () {
-    pro_1 = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . 2 c b a c 2 . . . . . 
-        . . . . c c b c f a c . . . . . 
-        . . 2 . a f b b b a c 2 . . . . 
-        . 2 2 . a f f b a f c c . . . . 
-        . . . . c b b a f f c . . . . . 
-        . . . 2 . b b a f a 2 . . . . . 
-        . 2 . . . 2 c b b . . . . . . . 
-        . . . 2 . . . . 2 . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, arthur, -100, 50)
-})
 function random_ghost7 () {
     ghost7 = sprites.create(img`
         ........................
@@ -1189,11 +1161,11 @@ let ghost5: Sprite = null
 let ghost4: Sprite = null
 let ghost11: Sprite = null
 let ghost9: Sprite = null
-let pro_1: Sprite = null
 let ghost10: Sprite = null
+let pro_1: Sprite = null
 let arthur: Sprite = null
-let ghost6: Sprite = null
 let ghost: Sprite = null
+let ghost6: Sprite = null
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -1328,6 +1300,14 @@ set_arthur()
 info.setScore(0)
 info.setScore(info.highScore())
 game.onUpdate(function () {
+    if (ghost3.isHittingTile(CollisionDirection.Bottom)) {
+        ghost3.vx += 50
+    }
+    if (ghost3.isHittingTile(CollisionDirection.Top)) {
+        ghost3.vx += -50
+    }
+})
+game.onUpdate(function () {
     if (ghost.isHittingTile(CollisionDirection.Bottom)) {
         ghost.vx += 50
     }
@@ -1343,97 +1323,12 @@ game.onUpdate(function () {
         ghost2.vx += -50
     }
 })
-game.onUpdate(function () {
-    if (ghost3.isHittingTile(CollisionDirection.Bottom)) {
-        ghost3.vx += 50
-    }
-    if (ghost3.isHittingTile(CollisionDirection.Top)) {
-        ghost3.vx += -50
-    }
-})
-game.onUpdate(function () {
-    if (ghost4.isHittingTile(CollisionDirection.Bottom)) {
-        ghost4.vx += 50
-    }
-    if (ghost4.isHittingTile(CollisionDirection.Top)) {
-        ghost4.vx += -50
-    }
-})
-game.onUpdate(function () {
-    if (ghost5.isHittingTile(CollisionDirection.Bottom)) {
-        ghost5.vx += 50
-    }
-    if (ghost5.isHittingTile(CollisionDirection.Top)) {
-        ghost5.vx += -50
-    }
-})
-game.onUpdate(function () {
-    if (ghost6.isHittingTile(CollisionDirection.Bottom)) {
-        ghost6.vx += 50
-    }
-    if (ghost6.isHittingTile(CollisionDirection.Top)) {
-        ghost6.vx += -50
-    }
-})
-game.onUpdate(function () {
-    if (ghost7.isHittingTile(CollisionDirection.Bottom)) {
-        ghost7.vx += 50
-    }
-    if (ghost7.isHittingTile(CollisionDirection.Top)) {
-        ghost7.vx += -50
-    }
-})
-game.onUpdate(function () {
-    if (ghost8.isHittingTile(CollisionDirection.Bottom)) {
-        ghost8.vx += 50
-    }
-    if (ghost8.isHittingTile(CollisionDirection.Top)) {
-        ghost8.vx += -50
-    }
-})
-game.onUpdate(function () {
-    if (ghost9.isHittingTile(CollisionDirection.Bottom)) {
-        ghost9.vx += 50
-    }
-    if (ghost9.isHittingTile(CollisionDirection.Top)) {
-        ghost9.vx += -50
-    }
-})
-game.onUpdate(function () {
-    if (ghost10.isHittingTile(CollisionDirection.Bottom)) {
-        ghost10.vx += 50
-    }
-    if (ghost10.isHittingTile(CollisionDirection.Top)) {
-        ghost10.vx += -50
-    }
+game.onUpdateInterval(1000, function () {
+    ghost2.setVelocity(randint(-70, 70), randint(-50, 50))
 })
 game.onUpdateInterval(1000, function () {
     ghost.setVelocity(randint(-70, 70), randint(-50, 50))
 })
 game.onUpdateInterval(1000, function () {
-    ghost2.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
     ghost3.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
-    ghost4.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
-    ghost5.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
-    ghost6.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
-    ghost7.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
-    ghost7.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
-    ghost9.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
-    ghost10.setVelocity(randint(-70, 70), randint(-50, 50))
 })
