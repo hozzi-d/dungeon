@@ -77,6 +77,10 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+sprites.onOverlap(SpriteKind.weapon, SpriteKind.Enemy, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeScoreBy(1)
+})
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     pro_1 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
@@ -122,24 +126,6 @@ function set_arthur () {
     controller.moveSprite(arthur)
     scene.cameraFollowSprite(arthur)
     tiles.placeOnRandomTile(arthur, assets.tile`myTile1`)
-    mySprite = sprites.create(img`
-        . . . . . . f f f f . . . . . . 
-        . . . . f f f 2 2 f f f . . . . 
-        . . . f f f 2 2 2 2 f f f . . . 
-        . . f f f e e e e e e f f f . . 
-        . . f f e 2 2 2 2 2 2 e e f . . 
-        . . f e 2 f f f f f f 2 e f . . 
-        . . f f f f e e e e f f f f . . 
-        . f f e f b f 4 4 f b f e f f . 
-        . f e e 4 1 f d d f 1 4 e e f . 
-        . . f e e d d d d d d e e f . . 
-        . . . f e e 4 4 4 4 e e f . . . 
-        . . e 4 f 2 2 2 2 2 2 f 4 e . . 
-        . . 4 d f 2 2 2 2 2 2 f d 4 . . 
-        . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . . f f . . f f . . . . . 
-        `, SpriteKind.Player)
     sword = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -158,13 +144,37 @@ function set_arthur () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.weapon)
-    unhurtable = 0
     swingsword = 0
     speed = 70
     vertical = -1
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    if (swingsword == 0) {
+        music.pewPew.play()
+        swingsword = 1
+        speed = 0
+        pause(200)
+        swingsword = 0
+        speed = 70
+        sword.setImage(img`
+            . . . . . . . . . . . . . . 1 . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+    }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -541,15 +551,13 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 })
 let ghost3: Sprite = null
 let ghost2: Sprite = null
-let ghost: Sprite = null
 let vertical = 0
 let speed = 0
 let swingsword = 0
-let unhurtable = 0
 let sword: Sprite = null
-let mySprite: Sprite = null
 let pro_1: Sprite = null
 let arthur: Sprite = null
+let ghost: Sprite = null
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -683,119 +691,7 @@ random_ghost3()
 set_arthur()
 info.setScore(0)
 info.setScore(info.highScore())
-let treasure = [img`
-    ................f...
-    ...............f4f..
-    ..............f414f.
-    .............f45514f
-    .............f44544f
-    .............f45454f
-    .............f45554f
-    .....ffff.....f454f.
-    ...fff22fff...f454f.
-    ..fff2222fff..f454f.
-    .fffeeeeeeffff45554f
-    .ffe222222eef4444444
-    .fe2ffffff2eff4dde4f
-    .ffffbfeefbff.4ddd4.
-    ffef41f44f1effeddd4.
-    fee4dddddd4eef.e44..
-    .feeddddddeef.......
-    ..fee4444eef........
-    .e4f222222f.........
-    .4df222222f.........
-    .44f445544f.........
-    ....ffffff..........
-    ....ff..ff..........
-    `, img`
-    ....................
-    ....................
-    ....................
-    ....................
-    ....................
-    ....................
-    .....ffff.....fffff.
-    ...fff22fff..f45555f
-    ..fff2222ffff4555155
-    .fffeeeeeefff4555515
-    .ffe222222eef5555555
-    .fe2ffffff2ef5555555
-    .ffffbfeefbff54e4e4e
-    ffef41f44f1eff4ddd4f
-    fee4dddddd4eeffe44f.
-    .feeddddddeef.......
-    ..fee4444eef........
-    .e4f222222f.........
-    .4df222222f.........
-    .44f445544f.........
-    ....ffffff..........
-    ....ff..ff..........
-    `, img`
-    ....................
-    ....................
-    ....................
-    ....................
-    ....................
-    ....................
-    ...............ffff.
-    .....ffff.....f6d1f.
-    ...fff22fff...f61df.
-    ..fff2222fff..f6d1f.
-    .fffeeeeeefff.f66f..
-    .ffe222222eef.f444..
-    .fe2ffffff2ef.4dde4.
-    .ffffbfeefbff.4ddd4.
-    ffef41f44f1effeddd4.
-    fee4dddddd4eef.e44..
-    .feeddddddeef.......
-    ..fee4444eef........
-    .e4f222222f.........
-    .4df222222f.........
-    .44f445544f.........
-    ....ffffff..........
-    ....ff..ff..........
-    `, img`
-    ....................
-    ....................
-    ....................
-    ....................
-    ....................
-    ....................
-    ....................
-    .....ffff......2ff..
-    ...fff22fff....fff..
-    ..fff2222fff...f6f..
-    .fffeeeeeefff..6f6..
-    .ffe222222eef..444..
-    .fe2ffffff2ef.4dde4.
-    .ffffbfeefbff.4ddd4.
-    ffef41f44f1effeddd4.
-    fee4dddddd4eef.e44..
-    .feeddddddeef.......
-    ..fee4444eef........
-    .e4f222222f.........
-    .4df222222f.........
-    .44f445544f.........
-    ....ffffff..........
-    ....ff..ff..........
-    `, img`
-    . . . . . . f f f f . . . . . . 
-    . . . . f f f 8 8 f f f . . . . 
-    . . . f f f 8 8 8 8 f f f . . . 
-    . . f f f 6 6 6 6 6 6 f f f . . 
-    . . f f 6 8 8 8 8 8 8 6 6 f . . 
-    . . f 6 8 f f f f f f 8 6 f . . 
-    . . f f f b f e e f b f f f . . 
-    . f f e f 1 f 4 4 f 1 f e f f . 
-    . f e e 4 d d d d d d 4 e e f . 
-    . . f e e d d d d d d e e f . . 
-    . . . f e e 4 4 4 4 e e f . . . 
-    . . e 4 f 2 2 2 2 2 2 f 4 e . . 
-    . . 4 d f 2 2 2 2 2 2 f d 4 . . 
-    . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
-    . . . . . f f f f f f . . . . . 
-    . . . . . f f . . f f . . . . . 
-    `]
+ghost.follow(arthur)
 game.onUpdate(function () {
     if (ghost.isHittingTile(CollisionDirection.Bottom)) {
         ghost.vx += 50
@@ -824,8 +720,8 @@ game.onUpdate(function () {
     if (swingsword == 1) {
         let horizontal = 0
         if (horizontal == -1) {
-            sword.right = mySprite.left
-            mySprite.setImage(img`
+            sword.right = arthur.left
+            arthur.setImage(img`
                 . . . . . . f f . . . . . . . . 
                 . . . . f f 2 f f f f . . . . . 
                 . . . f f 2 f e e e e f f . . . 
@@ -861,11 +757,11 @@ game.onUpdate(function () {
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 `)
-            sword.y = mySprite.y
+            sword.y = arthur.y
         }
         if (horizontal == 1) {
-            sword.left = mySprite.right
-            mySprite.setImage(img`
+            sword.left = arthur.right
+            arthur.setImage(img`
                 . . . . . . . . f f . . . . . . 
                 . . . . . f f f f 2 f f . . . . 
                 . . . f f e e e e f 2 f f . . . 
@@ -901,11 +797,11 @@ game.onUpdate(function () {
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 `)
-            sword.y = mySprite.y
+            sword.y = arthur.y
         }
         if (vertical == 1) {
-            sword.top = mySprite.bottom
-            mySprite.setImage(img`
+            sword.top = arthur.bottom
+            arthur.setImage(img`
                 . . . . . . . f f . . . . . . . 
                 . . . . . f f 2 2 f f . . . . . 
                 . . . f f f 2 2 2 2 f f f . . . 
@@ -941,11 +837,11 @@ game.onUpdate(function () {
                 . . . . . . . . c 9 c . . . . . 
                 . . . . . . . . . c . . . . . . 
                 `)
-            sword.x = mySprite.x
+            sword.x = arthur.x
         }
         if (vertical == -1) {
-            sword.bottom = mySprite.top
-            mySprite.setImage(img`
+            sword.bottom = arthur.top
+            arthur.setImage(img`
                 . . . . d 1 f f f f . . . . . . 
                 . . . . f f e e e e f f . . . . 
                 . . . f e e e f f e e e f . . . 
@@ -981,7 +877,7 @@ game.onUpdate(function () {
                 . . . . . c c 9 c c . . . . . . 
                 . . . . c c c c c c c . . . . . 
                 `)
-            sword.x = mySprite.x
+            sword.x = arthur.x
         }
     }
 })
