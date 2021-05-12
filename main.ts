@@ -1,5 +1,6 @@
 namespace SpriteKind {
     export const weapon = SpriteKind.create()
+    export const boss = SpriteKind.create()
 }
 function random_ghost6 () {
     ghost6 = sprites.create(img`
@@ -190,6 +191,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . 2 c a b b c c c . . . . 
         . . . . . c c c c c c . 2 . . . 
         `, arthur, -100, 50)
+    pro_1.startEffect(effects.fire)
     pause(10000)
 })
 function set_arthur () {
@@ -499,6 +501,26 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+function boss_sistem () {
+    princess = sprites.create(img`
+        . . . . . f f 4 4 f f . . . . . 
+        . . . . f 5 4 5 5 4 5 f . . . . 
+        . . . f e 4 5 5 5 5 4 e f . . . 
+        . . f b 3 e 4 4 4 4 e 3 b f . . 
+        . . f 3 3 3 3 3 3 3 3 3 3 f . . 
+        . f 3 3 e b 3 e e 3 b e 3 3 f . 
+        . f 3 3 f f e e e e f f 3 3 f . 
+        . f b b f b 2 e e a b f b b f . 
+        . f b b e 1 2 4 4 a 1 e b b f . 
+        f f b b f 4 4 4 4 4 4 f b b f f 
+        f b b f f f e e e e f f f b b f 
+        . f e e f b d d d d b f e e f . 
+        . . e 4 c d d d d d d c 4 e . . 
+        . . e f b d b d b d b b f e . . 
+        . . . f f 1 d 1 d 1 d f f . . . 
+        . . . . . f f b b f f . . . . . 
+        `, SpriteKind.boss)
+}
 function random_ghost15 () {
     ghost15 = sprites.create(img`
         ........................
@@ -952,9 +974,6 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
-function ghost_aim () {
-	
-}
 function random_ghost7 () {
     ghost7 = sprites.create(img`
         ........................
@@ -1066,6 +1085,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     otherSprite.destroy()
     info.changeScoreBy(1)
 })
+let princess: Sprite = null
 let vertical = 0
 let speed = 0
 let swingsword = 0
@@ -1384,24 +1404,17 @@ game.onUpdateInterval(1000, function () {
     ghost.setVelocity(randint(-70, 70), randint(-50, 50))
 })
 game.onUpdateInterval(1000, function () {
-    ghost2.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
-    ghost15.setVelocity(randint(-70, 70), randint(-50, 50))
-})
-game.onUpdateInterval(1000, function () {
     ghost3.setVelocity(randint(-70, 70), randint(-50, 50))
+})
+game.onUpdateInterval(1000, function () {
+    ghost2.setVelocity(randint(-70, 70), randint(-50, 50))
 })
 game.onUpdateInterval(1000, function () {
     ghost4.setVelocity(randint(-70, 70), randint(-50, 50))
 })
 game.onUpdateInterval(1000, function () {
-    ghost5.setVelocity(randint(-70, 70), randint(-50, 50))
+    ghost15.setVelocity(randint(-70, 70), randint(-50, 50))
 })
-forever(function () {
-    if (swingsword == 1) {
-        if (vertical == -1) {
-        	
-        }
-    }
+game.onUpdateInterval(1000, function () {
+    ghost5.setVelocity(randint(-70, 70), randint(-50, 50))
 })
