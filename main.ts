@@ -195,7 +195,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     pause(10000)
 })
 function set_arthur () {
-    info.setLife(44)
+    info.setLife(10)
     arthur = sprites.create(img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -425,6 +425,29 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             `)
     }
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
+    projectile = sprites.createProjectileFromSprite(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 3 3 3 3 4 4 4 4 4 2 2 . 2 
+        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+        . . 3 3 3 3 3 2 2 2 1 1 5 4 . 2 
+        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 3 3 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 3 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 2 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, princess, 50, 50)
+    info.changeLifeBy(-1)
+    pause(200)
+    scene.cameraShake(4, 500)
+})
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     arthur,
@@ -502,6 +525,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 function boss_sistem () {
+    let gravity = 0
     princess = sprites.create(img`
         . . . . . f f 4 4 f f . . . . . 
         . . . . f 5 4 5 5 4 5 f . . . . 
@@ -520,7 +544,21 @@ function boss_sistem () {
         . . . f f 1 d 1 d 1 d f f . . . 
         . . . . . f f b b f f . . . . . 
         `, SpriteKind.boss)
+    tiles.placeOnRandomTile(princess, sprites.dungeon.stairLadder)
+    princess.setVelocity(0, 50)
+    princess.vy += 34
+    princess.ay = gravity
+    if (Math.percentChance(50)) {
+        princess.vy = Math.randomRange(30, 60)
+    } else {
+        princess.vx = Math.randomRange(-60, -30)
+    }
+    princess.setBounceOnWall(true)
 }
+sprites.onOverlap(SpriteKind.weapon, SpriteKind.boss, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeScoreBy(1)
+})
 function random_ghost15 () {
     ghost15 = sprites.create(img`
         ........................
@@ -838,6 +876,9 @@ function random_ghost5 () {
     ghost5.setVelocity(50, 50)
     tiles.placeOnTile(ghost5, tiles.getTileLocation(30, 46))
 }
+sprites.onDestroyed(SpriteKind.boss, function (sprite) {
+    game.over(true, effects.starField)
+})
 function random_ghost2 () {
     ghost2 = sprites.create(img`
         ........................
@@ -974,6 +1015,9 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+info.onLifeZero(function () {
+    game.over(false)
+})
 function random_ghost7 () {
     ghost7 = sprites.create(img`
         ........................
@@ -1004,6 +1048,17 @@ function random_ghost7 () {
     ghost7.setVelocity(50, 50)
     tiles.placeOnTile(ghost7, tiles.getTileLocation(24, 49))
 }
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeScoreBy(1)
+})
+sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
+    if (arthur.overlapsWith(princess)) {
+        princess.follow(arthur)
+    } else {
+    	
+    }
+})
 function random_ghost3 () {
     ghost3 = sprites.create(img`
         ........................
@@ -1086,6 +1141,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     info.changeScoreBy(1)
 })
 let princess: Sprite = null
+let projectile: Sprite = null
 let vertical = 0
 let speed = 0
 let swingsword = 0
@@ -1236,6 +1292,7 @@ scene.setBackgroundColor(1)
 tiles.setTilemap(tilemap`level3`)
 set_arthur()
 allghosts()
+boss_sistem()
 info.setScore(0)
 info.setScore(info.highScore())
 ghost.follow(arthur)
@@ -1417,4 +1474,7 @@ game.onUpdateInterval(1000, function () {
 })
 game.onUpdateInterval(1000, function () {
     ghost5.setVelocity(randint(-70, 70), randint(-50, 50))
+})
+game.onUpdateInterval(1000, function () {
+    princess.setVelocity(randint(-70, 70), randint(-50, 50))
 })
