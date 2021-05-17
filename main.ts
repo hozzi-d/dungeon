@@ -188,6 +188,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     true
     )
+    sguardo = 1
 })
 sprites.onOverlap(SpriteKind.weapon, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy(effects.fire, 500)
@@ -235,7 +236,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         `, SpriteKind.pro1)
 })
 function set_arthur () {
-    info.setLife(10)
+    info.setLife(3333)
     arthur = sprites.create(img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -276,12 +277,9 @@ function set_arthur () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.weapon)
-    swingsword = 0
-    speed = 70
-    vertical = -1
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (controller.left.isPressed()) {
+    if (sguardo == 2) {
         sword.right = arthur.left
         arthur.setImage(img`
             . . . . . . f f . . . . . . . . 
@@ -320,7 +318,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . . . . . . . . . . . 
             `)
         sword.y = arthur.y
-    } else if (controller.right.isPressed()) {
+    } else if (sguardo == 4) {
         sword.left = arthur.right
         arthur.setImage(img`
             . . . . . . . . f f . . . . . . 
@@ -359,7 +357,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . . . . . . . . . . . 
             `)
         sword.y = arthur.y
-    } else if (controller.up.isPressed()) {
+    } else if (sguardo == 1) {
         sword.bottom = arthur.top
         arthur.setImage(img`
             . . . . d 1 f f f f . . . . . . 
@@ -398,7 +396,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . c c c c c c c . . . . . 
             `)
         sword.x = arthur.x
-    } else if (controller.down.isPressed()) {
+    } else if (sguardo == 3) {
         sword.top = arthur.bottom
         arthur.setImage(img`
             . . . . . . . f f . . . . . . . 
@@ -535,6 +533,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     true
     )
+    sguardo = 2
 })
 function boss_sistem () {
     let gravity = 0
@@ -758,6 +757,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     true
     )
+    sguardo = 4
 })
 function random_ghost11 () {
     ghost11 = sprites.create(img`
@@ -1058,6 +1058,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     true
     )
+    sguardo = 3
 })
 info.onLifeZero(function () {
     game.over(false)
@@ -1251,11 +1252,9 @@ let projectile2: Sprite = null
 let palla_di_fuoco: Sprite = null
 let projectile: Sprite = null
 let princess: Sprite = null
-let vertical = 0
-let speed = 0
-let swingsword = 0
 let sword: Sprite = null
 let pro_1: Sprite = null
+let sguardo = 0
 let ghost15: Sprite = null
 let ghost14: Sprite = null
 let ghost13: Sprite = null
