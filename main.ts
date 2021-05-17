@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const weapon = SpriteKind.create()
     export const boss = SpriteKind.create()
     export const gh = SpriteKind.create()
+    export const pro1 = SpriteKind.create()
 }
 function random_ghost6 () {
     ghost6 = sprites.create(img`
@@ -188,7 +189,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 sprites.onOverlap(SpriteKind.weapon, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy()
+    otherSprite.destroy(effects.fire, 500)
     info.changeScoreBy(1)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -1209,6 +1210,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (spr
     tiles.placeOnRandomTile(arthur, assets.tile`myTile22`)
     game.splash("you teletraported")
 })
+let mySprite: Sprite = null
 let projectile2: Sprite = null
 let princess: Sprite = null
 let projectile: Sprite = null
@@ -1400,6 +1402,24 @@ game.onUpdate(function () {
             . . . . . . . . . . . . . . . . 
             `, ghost, 50, 50)
     }
+    mySprite = sprites.create(img`
+        . . . . . . . . . c c 8 . . . . 
+        . . 2 2 . 2 2 c c c f 8 c 2 . . 
+        . 2 . c c 8 8 f c a f f f c c . 
+        2 2 c c c f f f c a a f f c c c 
+        2 c c c f f f f c c a a c 8 c c 
+        2 c c b f f f 8 a c c a a a c 2 
+        c a a b b 8 a b c c c c c c c c 
+        2 2 c a a b b a c c c c c f f c 
+        a 8 f c a a c c a c a 2 f f f 2 
+        c a 8 a a c c c c a a f f f 8 a 
+        . a c a a c f f a a b 8 f f c a 
+        . . c 2 b a f f f a b b c c 6 c 
+        . 2 . 2 b b a f f 6 6 a b 6 c 2 
+        2 2 . c c b b b 6 6 a c c c c . 
+        . . . . 2 c a b b c c c . . . . 
+        . . . . . c c c c c c . 2 . . . 
+        `, SpriteKind.pro1)
 })
 game.onUpdateInterval(1000, function () {
     ghost.setVelocity(randint(-70, 70), randint(-50, 50))
