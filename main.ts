@@ -3,6 +3,7 @@ namespace SpriteKind {
     export const boss = SpriteKind.create()
     export const gh = SpriteKind.create()
     export const pro1 = SpriteKind.create()
+    export const pro2 = SpriteKind.create()
 }
 function random_ghost6 () {
     ghost6 = sprites.create(img`
@@ -184,8 +185,8 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . f 4 e e f f f f f f e . . . . 
         . . . . . . . . f f f . . . . . 
         `],
-    100,
-    false
+    200,
+    true
     )
 })
 sprites.onOverlap(SpriteKind.weapon, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -213,6 +214,25 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         `, arthur, -100, 50)
     pro_1.startEffect(effects.fire)
     pause(10000)
+    pro_1.setBounceOnWall(true)
+    pro_1 = sprites.create(img`
+        . . . . . . . . . c c 8 . . . . 
+        . . 2 2 . 2 2 c c c f 8 c 2 . . 
+        . 2 . c c 8 8 f c a f f f c c . 
+        2 2 c c c f f f c a a f f c c c 
+        2 c c c f f f f c c a a c 8 c c 
+        2 c c b f f f 8 a c c a a a c 2 
+        c a a b b 8 a b c c c c c c c c 
+        2 2 c a a b b a c c c c c f f c 
+        a 8 f c a a c c a c a 2 f f f 2 
+        c a 8 a a c c c c a a f f f 8 a 
+        . a c a a c f f a a b 8 f f c a 
+        . . c 2 b a f f f a b b c c 6 c 
+        . 2 . 2 b b a f f 6 6 a b 6 c 2 
+        2 2 . c c b b b 6 6 a c c c c . 
+        . . . . 2 c a b b c c c . . . . 
+        . . . . . c c c c c c . 2 . . . 
+        `, SpriteKind.pro1)
 })
 function set_arthur () {
     info.setLife(10)
@@ -418,13 +438,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             `)
         sword.x = arthur.x
     }
-    if (swingsword == 0) {
-        music.pewPew.play()
-        swingsword = 1
-        speed = 0
+    if (true) {
         pause(200)
-        swingsword = 0
-        speed = 70
         sword.setImage(img`
             . . . . . . . . . . . . . . 1 . 
             . . . . . . . . . . . . . . . . 
@@ -444,29 +459,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . . . . . . . . . . . 
             `)
     }
-})
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
-    projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . 2 2 . . . . . . . 
-        . . . . . . 4 4 2 2 2 2 2 . . . 
-        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
-        . . . 3 3 3 3 4 4 4 4 4 2 2 . 2 
-        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
-        . . 3 3 3 3 3 2 2 2 1 1 5 4 . 2 
-        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
-        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
-        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 2 
-        2 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . . 4 2 3 3 2 2 4 2 2 4 2 4 . . 
-        . . 4 2 2 3 2 2 4 4 4 2 4 4 . 2 
-        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
-        . 2 . 2 4 4 2 2 2 2 4 4 . . 2 2 
-        . . . . . . 4 4 4 4 . . . . 2 . 
-        . . . . . . . . . . 2 . . . . . 
-        `, princess, 50, 50)
-    info.changeLifeBy(-1)
-    pause(200)
-    scene.cameraShake(4, 500)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -540,8 +532,8 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
         `],
-    100,
-    false
+    200,
+    true
     )
 })
 function boss_sistem () {
@@ -615,6 +607,10 @@ function random_ghost15 () {
         ghost15.vx += -50
     }
 }
+sprites.onOverlap(SpriteKind.pro1, SpriteKind.Enemy, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeScoreBy(1)
+})
 function random_ghost10 () {
     ghost10 = sprites.create(img`
         ........................
@@ -759,8 +755,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f f f f f f e e f f . . . 
         . . . . f f . . . f f f . . . . 
         `],
-    100,
-    false
+    200,
+    true
     )
 })
 function random_ghost11 () {
@@ -827,7 +823,7 @@ function random_ghost4 () {
         ........................
         `, SpriteKind.Enemy)
     ghost4.setVelocity(50, 50)
-    tiles.placeOnTile(ghost4, tiles.getTileLocation(14, 30))
+    tiles.placeOnTile(ghost4, tiles.getTileLocation(15, 23))
     if (ghost4.isHittingTile(CollisionDirection.Bottom)) {
         ghost4.vx += 50
     }
@@ -836,8 +832,8 @@ function random_ghost4 () {
     }
 }
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    pause(500)
     info.changeLifeBy(-1)
+    pause(500)
     scene.cameraShake(4, 500)
 })
 function random_ghost () {
@@ -1059,8 +1055,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f f f f f f f . f f . 
         . . . . . . . . . f f f . . . . 
         `],
-    100,
-    false
+    200,
+    true
     )
 })
 info.onLifeZero(function () {
@@ -1102,16 +1098,50 @@ function random_ghost7 () {
         ghost7.vx += -50
     }
 }
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.pro1, SpriteKind.boss, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeScoreBy(1)
 })
-sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
-    if (arthur.overlapsWith(princess)) {
-        princess.follow(arthur)
-    } else {
-    	
-    }
+sprites.onOverlap(SpriteKind.pro2, SpriteKind.Player, function (sprite, otherSprite) {
+    projectile = sprites.createProjectileFromSprite(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 3 3 3 3 4 4 4 4 4 2 2 . 2 
+        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+        . . 3 3 3 3 3 2 2 2 1 1 5 4 . 2 
+        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 3 3 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 3 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 2 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, princess, 50, 50)
+    info.changeLifeBy(-1)
+    pause(200)
+    scene.cameraShake(4, 500)
+    palla_di_fuoco = sprites.create(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 3 3 3 3 4 4 4 4 4 2 2 . 2 
+        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+        . . 3 3 3 3 3 2 2 2 1 1 5 4 . 2 
+        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 3 3 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 3 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 2 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, SpriteKind.pro2)
 })
 function random_ghost3 () {
     ghost3 = sprites.create(img`
@@ -1202,9 +1232,15 @@ function random_ghost8 () {
         ghost8.vx += -50
     }
 }
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy()
-    info.changeScoreBy(1)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile23`, function (sprite, location) {
+    tiles.setWallAt(tiles.getTileLocation(13, 32), false)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
+    if (true) {
+        princess.follow(arthur)
+    } else {
+    	
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (sprite, location) {
     tiles.placeOnRandomTile(arthur, assets.tile`myTile22`)
@@ -1212,8 +1248,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (spr
 })
 let mySprite: Sprite = null
 let projectile2: Sprite = null
-let princess: Sprite = null
+let palla_di_fuoco: Sprite = null
 let projectile: Sprite = null
+let princess: Sprite = null
 let vertical = 0
 let speed = 0
 let swingsword = 0
@@ -1357,7 +1394,6 @@ scene.setBackgroundImage(img`
     111111111111111111111111111111bbbbbbbbbb111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     111111111111111111111111111111bbbbbbbbbb111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     `)
-effects.blizzard.startScreenEffect()
 game.splash("READY TO START THE DUNGEON ")
 pause(1000)
 scene.setBackgroundColor(1)
