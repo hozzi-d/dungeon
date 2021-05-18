@@ -11,9 +11,7 @@
         "servo": "*",
         "darts": "*",
         "tilemaps": "github:microsoft/pxt-tilemaps#v1.11.0",
-        "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.1.0",
-        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.1",
-        "animation": "*"
+        "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.1.0"
     },
     "files": [
         "main.blocks",
