@@ -536,7 +536,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     sguardo = 2
 })
 function boss_sistem () {
-    let gravity = 0
     princess = sprites.create(img`
         . . . . . f f 4 4 f f . . . . . 
         . . . . f 5 4 5 5 4 5 f . . . . 
@@ -558,7 +557,7 @@ function boss_sistem () {
     tiles.placeOnRandomTile(princess, sprites.dungeon.stairLadder)
     princess.setVelocity(0, 50)
     princess.vy += 34
-    princess.ay = gravity
+    princess.ay = 0
     if (Math.percentChance(50)) {
         princess.vy = Math.randomRange(30, 60)
     } else {
@@ -1247,8 +1246,6 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (spr
     tiles.placeOnRandomTile(arthur, assets.tile`myTile22`)
     game.splash("you teletraported")
 })
-let mySprite: Sprite = null
-let projectile2: Sprite = null
 let palla_di_fuoco: Sprite = null
 let projectile: Sprite = null
 let princess: Sprite = null
@@ -1418,43 +1415,8 @@ ghost14.follow(arthur)
 ghost15.follow(arthur)
 game.onUpdate(function () {
     if (ghost.overlapsWith(arthur)) {
-        projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, ghost, 50, 50)
+    	
     }
-    mySprite = sprites.create(img`
-        . . . . . . . . . c c 8 . . . . 
-        . . 2 2 . 2 2 c c c f 8 c 2 . . 
-        . 2 . c c 8 8 f c a f f f c c . 
-        2 2 c c c f f f c a a f f c c c 
-        2 c c c f f f f c c a a c 8 c c 
-        2 c c b f f f 8 a c c a a a c 2 
-        c a a b b 8 a b c c c c c c c c 
-        2 2 c a a b b a c c c c c f f c 
-        a 8 f c a a c c a c a 2 f f f 2 
-        c a 8 a a c c c c a a f f f 8 a 
-        . a c a a c f f a a b 8 f f c a 
-        . . c 2 b a f f f a b b c c 6 c 
-        . 2 . 2 b b a f f 6 6 a b 6 c 2 
-        2 2 . c c b b b 6 6 a c c c c . 
-        . . . . 2 c a b b c c c . . . . 
-        . . . . . c c c c c c . 2 . . . 
-        `, SpriteKind.pro1)
 })
 game.onUpdateInterval(1000, function () {
     ghost.setVelocity(randint(-70, 70), randint(-50, 50))
