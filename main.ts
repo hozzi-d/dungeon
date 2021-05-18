@@ -195,158 +195,27 @@ sprites.onOverlap(SpriteKind.weapon, SpriteKind.Enemy, function (sprite, otherSp
     info.changeScoreBy(1)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (sguardo == 2) {
-        arthur.setImage(img`
-            . . . . . . f f . . . . . . . . 
-            . . . . f f 2 f f f f . . . . . 
-            . . . f f 2 f e e e e f f . . . 
-            . . f f 2 2 f e e e e e f f . . 
-            . . f e e e e f f e e e e f . . 
-            . f e 2 2 2 2 e e f f f f f . . 
-            . f 2 e f f f f 2 2 2 e f f f . 
-            . f f f e e e f f f f f f f f . 
-            . f e e 4 4 f b e 4 4 e f e f . 
-            . c f e d d f b 4 d 4 e e f . . 
-            c c . e e d d d 4 e e e f . . . 
-            1 c e d d e e 2 2 2 2 f . . . . 
-            c c e d d 4 4 e 4 4 4 f . . . . 
-            . c . e e e e f f f f f . . . . 
-            . . . . . f f f f f f f f . . . 
-            . . . . . . f f . . f f f . . . 
-            `)
-        pro_1 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . c c 8 . . . . 
-            . . 2 2 . 2 2 c c c f 8 c 2 . . 
-            . 2 . c c 8 8 f c a f f f c c . 
-            2 2 c c c f f f c a a f f c c c 
-            2 c c c f f f f c c a a c 8 c c 
-            2 c c b f f f 8 a c c a a a c 2 
-            c a a b b 8 a b c c c c c c c c 
-            2 2 c a a b b a c c c c c f f c 
-            a 8 f c a a c c a c a 2 f f f 2 
-            c a 8 a a c c c c a a f f f 8 a 
-            . a c a a c f f a a b 8 f f c a 
-            . . c 2 b a f f f a b b c c 6 c 
-            . 2 . 2 b b a f f 6 6 a b 6 c 2 
-            2 2 . c c b b b 6 6 a c c c c . 
-            . . . . 2 c a b b c c c . . . . 
-            . . . . . c c c c c c . 2 . . . 
-            `, arthur, -100, 0)
-    } else if (sguardo == 4) {
-        arthur.setImage(img`
-            . . . . . . . . f f . . . . . . 
-            . . . . . f f f f 2 f f . . . . 
-            . . . f f e e e e f 2 f f . . . 
-            . . f f e e e e e f 2 2 f f . . 
-            . . f e e e e f f e e e e f . . 
-            . . f f f f f e e 2 2 2 2 e f . 
-            . f f f e 2 2 2 f f f f e 2 f . 
-            . f f f f f f f f e e e f f f . 
-            . f e f e 4 4 e b f 4 4 e e f . 
-            . . f e e 4 d 4 b f d d e f c . 
-            . . . f e e e 4 d d d e e . c c 
-            . . . . f 2 2 2 2 e e d d e c 1 
-            . . . . f 4 4 4 e 4 4 d d e c c 
-            . . . . f f f f f e e e e . c . 
-            . . . f f f f f f f f . . . . . 
-            . . . f f f . . f f . . . . . . 
-            `)
-        pro_1 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . c c 8 . . . . 
-            . . 2 2 . 2 2 c c c f 8 c 2 . . 
-            . 2 . c c 8 8 f c a f f f c c . 
-            2 2 c c c f f f c a a f f c c c 
-            2 c c c f f f f c c a a c 8 c c 
-            2 c c b f f f 8 a c c a a a c 2 
-            c a a b b 8 a b c c c c c c c c 
-            2 2 c a a b b a c c c c c f f c 
-            a 8 f c a a c c a c a 2 f f f 2 
-            c a 8 a a c c c c a a f f f 8 a 
-            . a c a a c f f a a b 8 f f c a 
-            . . c 2 b a f f f a b b c c 6 c 
-            . 2 . 2 b b a f f 6 6 a b 6 c 2 
-            2 2 . c c b b b 6 6 a c c c c . 
-            . . . . 2 c a b b c c c . . . . 
-            . . . . . c c c c c c . 2 . . . 
-            `, arthur, 100, 0)
-    } else if (sguardo == 1) {
-        arthur.setImage(img`
-            . . . . d 1 f f f f . . . . . . 
-            . . . . f f e e e e f f . . . . 
-            . . . f e e e f f e e e f . . . 
-            . . f f f f f 2 2 f f f f f . . 
-            . . f f e 2 e 2 2 e 2 e f f . . 
-            . . f e 2 f 2 f f 2 f 2 e f . . 
-            . . f f f 2 2 e e 2 2 f f f . . 
-            . f f e f 2 f e e f 2 f e f f . 
-            . f e e f f e e e e f e e e f . 
-            . . f e e e e e e e e e e f . . 
-            . . . f e e e e e e e e f . . . 
-            . . . . f f f f f f f f 4 e . . 
-            . . . . f 2 2 2 2 2 2 f d 4 . . 
-            . . . . f 4 4 4 4 4 4 f 4 4 . . 
-            . . . . . f f f f f f . . . . . 
-            . . . . . f f . . f f . . . . . 
-            `)
-        pro_1 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . c c 8 . . . . 
-            . . 2 2 . 2 2 c c c f 8 c 2 . . 
-            . 2 . c c 8 8 f c a f f f c c . 
-            2 2 c c c f f f c a a f f c c c 
-            2 c c c f f f f c c a a c 8 c c 
-            2 c c b f f f 8 a c c a a a c 2 
-            c a a b b 8 a b c c c c c c c c 
-            2 2 c a a b b a c c c c c f f c 
-            a 8 f c a a c c a c a 2 f f f 2 
-            c a 8 a a c c c c a a f f f 8 a 
-            . a c a a c f f a a b 8 f f c a 
-            . . c 2 b a f f f a b b c c 6 c 
-            . 2 . 2 b b a f f 6 6 a b 6 c 2 
-            2 2 . c c b b b 6 6 a c c c c . 
-            . . . . 2 c a b b c c c . . . . 
-            . . . . . c c c c c c . 2 . . . 
-            `, arthur, 0, -100)
-    } else if (sguardo == 3) {
-        arthur.setImage(img`
-            . . . . . . . f f . . . . . . . 
-            . . . . . f f 2 2 f f . . . . . 
-            . . . f f f 2 2 2 2 f f f . . . 
-            . . f f f 2 2 2 2 2 2 f f f . . 
-            . . f f f 2 2 2 2 2 2 f f f . . 
-            . . f e e e e e e e e e e f f . 
-            . . f e 2 2 2 2 2 2 2 2 e f f . 
-            . . f f f f e e e e f f f f f . 
-            . . f e f b f 4 4 f b f e f f . 
-            . . f e 4 1 f d d f 1 4 e f . . 
-            . . f f e 4 d d d d 4 e f e . . 
-            . . f e f 2 2 2 2 2 f 4 e . . . 
-            . . f 4 f 4 4 5 5 4 f 4 e . . . 
-            . . . . f f f f f f d d e . . . 
-            . . . . . f f f f e d d e . . . 
-            . . . . . . . . . . e e . . . . 
-            `)
-        pro_1 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . c c 8 . . . . 
-            . . 2 2 . 2 2 c c c f 8 c 2 . . 
-            . 2 . c c 8 8 f c a f f f c c . 
-            2 2 c c c f f f c a a f f c c c 
-            2 c c c f f f f c c a a c 8 c c 
-            2 c c b f f f 8 a c c a a a c 2 
-            c a a b b 8 a b c c c c c c c c 
-            2 2 c a a b b a c c c c c f f c 
-            a 8 f c a a c c a c a 2 f f f 2 
-            c a 8 a a c c c c a a f f f 8 a 
-            . a c a a c f f a a b 8 f f c a 
-            . . c 2 b a f f f a b b c c 6 c 
-            . 2 . 2 b b a f f 6 6 a b 6 c 2 
-            2 2 . c c b b b 6 6 a c c c c . 
-            . . . . 2 c a b b c c c . . . . 
-            . . . . . c c c c c c . 2 . . . 
-            `, arthur, 0, 100)
-    }
+    pro_1 = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . c c 8 . . . . 
+        . . 2 2 . 2 2 c c c f 8 c 2 . . 
+        . 2 . c c 8 8 f c a f f f c c . 
+        2 2 c c c f f f c a a f f c c c 
+        2 c c c f f f f c c a a c 8 c c 
+        2 c c b f f f 8 a c c a a a c 2 
+        c a a b b 8 a b c c c c c c c c 
+        2 2 c a a b b a c c c c c f f c 
+        a 8 f c a a c c a c a 2 f f f 2 
+        c a 8 a a c c c c a a f f f 8 a 
+        . a c a a c f f a a b 8 f f c a 
+        . . c 2 b a f f f a b b c c 6 c 
+        . 2 . 2 b b a f f 6 6 a b 6 c 2 
+        2 2 . c c b b b 6 6 a c c c c . 
+        . . . . 2 c a b b c c c . . . . 
+        . . . . . c c c c c c . 2 . . . 
+        `, arthur, -100, 50)
+    pro_1.startEffect(effects.fire)
     pause(10000)
     pro_1.setBounceOnWall(true)
-    pro_1.startEffect(effects.fire)
     pro_1 = sprites.create(img`
         . . . . . . . . . c c 8 . . . . 
         . . 2 2 . 2 2 c c c f 8 c 2 . . 
@@ -667,6 +536,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     sguardo = 2
 })
 function boss_sistem () {
+    let gravity = 0
     princess = sprites.create(img`
         . . . . . f f 4 4 f f . . . . . 
         . . . . f 5 4 5 5 4 5 f . . . . 
@@ -688,7 +558,7 @@ function boss_sistem () {
     tiles.placeOnRandomTile(princess, sprites.dungeon.stairLadder)
     princess.setVelocity(0, 50)
     princess.vy += 34
-    princess.ay = 0
+    princess.ay = gravity
     if (Math.percentChance(50)) {
         princess.vy = Math.randomRange(30, 60)
     } else {
@@ -737,7 +607,7 @@ function random_ghost15 () {
     }
 }
 sprites.onOverlap(SpriteKind.pro1, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.fire, 500)
+    otherSprite.destroy()
     info.changeScoreBy(1)
 })
 function random_ghost10 () {
@@ -1377,6 +1247,8 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (spr
     tiles.placeOnRandomTile(arthur, assets.tile`myTile22`)
     game.splash("you teletraported")
 })
+let mySprite: Sprite = null
+let projectile2: Sprite = null
 let palla_di_fuoco: Sprite = null
 let projectile: Sprite = null
 let princess: Sprite = null
@@ -1546,8 +1418,43 @@ ghost14.follow(arthur)
 ghost15.follow(arthur)
 game.onUpdate(function () {
     if (ghost.overlapsWith(arthur)) {
-    	
+        projectile2 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, ghost, 50, 50)
     }
+    mySprite = sprites.create(img`
+        . . . . . . . . . c c 8 . . . . 
+        . . 2 2 . 2 2 c c c f 8 c 2 . . 
+        . 2 . c c 8 8 f c a f f f c c . 
+        2 2 c c c f f f c a a f f c c c 
+        2 c c c f f f f c c a a c 8 c c 
+        2 c c b f f f 8 a c c a a a c 2 
+        c a a b b 8 a b c c c c c c c c 
+        2 2 c a a b b a c c c c c f f c 
+        a 8 f c a a c c a c a 2 f f f 2 
+        c a 8 a a c c c c a a f f f 8 a 
+        . a c a a c f f a a b 8 f f c a 
+        . . c 2 b a f f f a b b c c 6 c 
+        . 2 . 2 b b a f f 6 6 a b 6 c 2 
+        2 2 . c c b b b 6 6 a c c c c . 
+        . . . . 2 c a b b c c c . . . . 
+        . . . . . c c c c c c . 2 . . . 
+        `, SpriteKind.pro1)
 })
 game.onUpdateInterval(1000, function () {
     ghost.setVelocity(randint(-70, 70), randint(-50, 50))
