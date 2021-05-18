@@ -4,6 +4,7 @@ namespace SpriteKind {
     export const gh = SpriteKind.create()
     export const pro1 = SpriteKind.create()
     export const pro2 = SpriteKind.create()
+    export const pdf = SpriteKind.create()
 }
 function random_ghost6 () {
     ghost6 = sprites.create(img`
@@ -214,7 +215,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . f f f f f f f f . . . 
             . . . . . . f f . . f f f . . . 
             `)
-        pro_1 = sprites.createProjectileFromSprite(img`
+        projectile = sprites.createProjectileFromSprite(img`
             . . . . . . . . . c c 8 . . . . 
             . . 2 2 . 2 2 c c c f 8 c 2 . . 
             . 2 . c c 8 8 f c a f f f c c . 
@@ -251,7 +252,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . f f f f f f f f . . . . . 
             . . . f f f . . f f . . . . . . 
             `)
-        pro_1 = sprites.createProjectileFromSprite(img`
+        projectile = sprites.createProjectileFromSprite(img`
             . . . . . . . . . c c 8 . . . . 
             . . 2 2 . 2 2 c c c f 8 c 2 . . 
             . 2 . c c 8 8 f c a f f f c c . 
@@ -288,7 +289,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . f f f f f f . . . . . 
             . . . . . f f . . f f . . . . . 
             `)
-        pro_1 = sprites.createProjectileFromSprite(img`
+        projectile = sprites.createProjectileFromSprite(img`
             . . . . . . . . . c c 8 . . . . 
             . . 2 2 . 2 2 c c c f 8 c 2 . . 
             . 2 . c c 8 8 f c a f f f c c . 
@@ -325,7 +326,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . f f f f e d d e . . . 
             . . . . . . . . . . e e . . . . 
             `)
-        pro_1 = sprites.createProjectileFromSprite(img`
+        projectile = sprites.createProjectileFromSprite(img`
             . . . . . . . . . c c 8 . . . . 
             . . 2 2 . 2 2 c c c f 8 c 2 . . 
             . 2 . c c 8 8 f c a f f f c c . 
@@ -345,26 +346,8 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             `, arthur, 0, 100)
     }
     pause(10000)
-    pro_1.setBounceOnWall(true)
-    pro_1.startEffect(effects.fire)
-    pro_1 = sprites.create(img`
-        . . . . . . . . . c c 8 . . . . 
-        . . 2 2 . 2 2 c c c f 8 c 2 . . 
-        . 2 . c c 8 8 f c a f f f c c . 
-        2 2 c c c f f f c a a f f c c c 
-        2 c c c f f f f c c a a c 8 c c 
-        2 c c b f f f 8 a c c a a a c 2 
-        c a a b b 8 a b c c c c c c c c 
-        2 2 c a a b b a c c c c c f f c 
-        a 8 f c a a c c a c a 2 f f f 2 
-        c a 8 a a c c c c a a f f f 8 a 
-        . a c a a c f f a a b 8 f f c a 
-        . . c 2 b a f f f a b b c c 6 c 
-        . 2 . 2 b b a f f 6 6 a b 6 c 2 
-        2 2 . c c b b b 6 6 a c c c c . 
-        . . . . 2 c a b b c c c . . . . 
-        . . . . . c c c c c c . 2 . . . 
-        `, SpriteKind.pro1)
+    projectile.setBounceOnWall(true)
+    projectile.startEffect(effects.fire)
 })
 function set_arthur () {
     info.setLife(3333)
@@ -394,20 +377,38 @@ function set_arthur () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . c 1 . . . . . . . . 
+        . . . . . . c 1 1 . . . . . . . 
+        . . . . . . c 1 1 . . . . . . . 
+        . . . . . . c 1 1 c . . . . . . 
+        . . . . . . c 1 1 c . . . . . . 
+        . . . . . . c 1 1 c . . . . . . 
+        . . . . . . c 1 1 c . . . . . . 
+        . . . . . . c 1 1 c . . . . . . 
+        . . . . . . c c c c . . . . . . 
+        . . . . . c c b b c c . . . . . 
+        . . . . . . c b b c . . . . . . 
+        . . . . . . c b b c . . . . . . 
+        . . . . . . c c c c . . . . . . 
         `, SpriteKind.weapon)
+    projectile = sprites.create(img`
+        . . . . . . . . . c c 8 . . . . 
+        . . 2 2 . 2 2 c c c f 8 c 2 . . 
+        . 2 . c c 8 8 f c a f f f c c . 
+        2 2 c c c f f f c a a f f c c c 
+        2 c c c f f f f c c a a c 8 c c 
+        2 c c b f f f 8 a c c a a a c 2 
+        c a a b b 8 a b c c c c c c c c 
+        2 2 c a a b b a c c c c c f f c 
+        a 8 f c a a c c a c a 2 f f f 2 
+        c a 8 a a c c c c a a f f f 8 a 
+        . a c a a c f f a a b 8 f f c a 
+        . . c 2 b a f f f a b b c c 6 c 
+        . 2 . 2 b b a f f 6 6 a b 6 c 2 
+        2 2 . c c b b b 6 6 a c c c c . 
+        . . . . 2 c a b b c c c . . . . 
+        . . . . . c c c c c c . 2 . . . 
+        `, SpriteKind.Projectile)
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (sguardo == 2) {
@@ -568,6 +569,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         sword.x = arthur.x
     }
     if (true) {
+        pause(100)
         sword.setImage(img`
             . . . . . . . . . . . . . . 1 . 
             . . . . . . . . . . . . . . . . 
@@ -587,6 +589,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . . . . . . . . . . . 
             `)
     }
+})
+sprites.onOverlap(SpriteKind.pdf, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    scene.cameraShake(4, 500)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -694,9 +700,27 @@ function boss_sistem () {
         princess.vx = Math.randomRange(-60, -30)
     }
     princess.setBounceOnWall(true)
+    palla_di_fuoco = sprites.create(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 2 2 2 2 4 4 4 4 4 2 2 . 2 
+        . . 4 2 2 2 2 2 2 2 1 1 4 4 . . 
+        . . 2 5 5 2 2 5 2 2 1 1 5 4 . 2 
+        . 4 2 5 2 2 5 2 2 2 2 5 5 4 4 . 
+        . 4 2 5 2 5 2 2 4 4 4 4 5 4 4 . 
+        . 4 2 2 2 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 2 5 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 2 5 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 2 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 5 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, SpriteKind.pdf)
 }
 sprites.onOverlap(SpriteKind.weapon, SpriteKind.boss, function (sprite, otherSprite) {
-    otherSprite.destroy()
+    otherSprite.destroy(effects.fire, 500)
     info.changeScoreBy(1)
 })
 function random_ghost15 () {
@@ -735,10 +759,6 @@ function random_ghost15 () {
         ghost15.vx += -50
     }
 }
-sprites.onOverlap(SpriteKind.pro1, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy()
-    info.changeScoreBy(1)
-})
 function random_ghost10 () {
     ghost10 = sprites.create(img`
         ........................
@@ -1228,50 +1248,9 @@ function random_ghost7 () {
         ghost7.vx += -50
     }
 }
-sprites.onOverlap(SpriteKind.pro1, SpriteKind.boss, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeScoreBy(1)
-})
-sprites.onOverlap(SpriteKind.pro2, SpriteKind.Player, function (sprite, otherSprite) {
-    projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . 2 2 . . . . . . . 
-        . . . . . . 4 4 2 2 2 2 2 . . . 
-        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
-        . . . 3 3 3 3 4 4 4 4 4 2 2 . 2 
-        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
-        . . 3 3 3 3 3 2 2 2 1 1 5 4 . 2 
-        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
-        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
-        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 2 
-        2 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . . 4 2 3 3 2 2 4 2 2 4 2 4 . . 
-        . . 4 2 2 3 2 2 4 4 4 2 4 4 . 2 
-        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
-        . 2 . 2 4 4 2 2 2 2 4 4 . . 2 2 
-        . . . . . . 4 4 4 4 . . . . 2 . 
-        . . . . . . . . . . 2 . . . . . 
-        `, princess, 50, 50)
-    info.changeLifeBy(-1)
-    pause(200)
-    scene.cameraShake(4, 500)
-    palla_di_fuoco = sprites.create(img`
-        . . . . . . . 2 2 . . . . . . . 
-        . . . . . . 4 4 2 2 2 2 2 . . . 
-        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
-        . . . 3 3 3 3 4 4 4 4 4 2 2 . 2 
-        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
-        . . 3 3 3 3 3 2 2 2 1 1 5 4 . 2 
-        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
-        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
-        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 2 
-        2 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . . 4 2 3 3 2 2 4 2 2 4 2 4 . . 
-        . . 4 2 2 3 2 2 4 4 4 2 4 4 . 2 
-        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
-        . 2 . 2 4 4 2 2 2 2 4 4 . . 2 2 
-        . . . . . . 4 4 4 4 . . . . 2 . 
-        . . . . . . . . . . 2 . . . . . 
-        `, SpriteKind.pro2)
 })
 function random_ghost3 () {
     ghost3 = sprites.create(img`
@@ -1362,25 +1341,21 @@ function random_ghost8 () {
         ghost8.vx += -50
     }
 }
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeScoreBy(1)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile23`, function (sprite, location) {
     tiles.setWallAt(tiles.getTileLocation(13, 32), false)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
-    if (true) {
-    	
-    } else {
-    	
-    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (sprite, location) {
     tiles.placeOnRandomTile(arthur, assets.tile`myTile22`)
     game.splash("you teletraported")
 })
 let palla_di_fuoco: Sprite = null
-let projectile: Sprite = null
 let princess: Sprite = null
 let sword: Sprite = null
-let pro_1: Sprite = null
+let projectile: Sprite = null
 let sguardo = 0
 let ghost15: Sprite = null
 let ghost14: Sprite = null
@@ -1560,4 +1535,109 @@ game.onUpdateInterval(1000, function () {
     ghost14.setVelocity(randint(-70, 70), randint(-50, 50))
     ghost15.setVelocity(randint(-70, 70), randint(-50, 50))
     princess.setVelocity(randint(-70, 70), randint(-50, 50))
+})
+forever(function () {
+    palla_di_fuoco = sprites.createProjectileFromSprite(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 2 2 2 2 4 4 4 4 4 2 2 . 2 
+        . . 4 2 2 2 2 2 2 2 1 1 4 4 . . 
+        . . 2 5 5 2 2 5 2 2 1 1 5 4 . 2 
+        . 4 2 5 2 2 5 2 2 2 2 5 5 4 4 . 
+        . 4 2 5 2 5 2 2 4 4 4 4 5 4 4 . 
+        . 4 2 2 2 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 2 5 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 2 5 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 2 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 5 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, princess, -100, -25)
+    pause(500)
+})
+forever(function () {
+    palla_di_fuoco = sprites.createProjectileFromSprite(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 2 2 2 2 4 4 4 4 4 2 2 . 2 
+        . . 4 2 2 2 2 2 2 2 1 1 4 4 . . 
+        . . 2 5 5 2 2 5 2 2 1 1 5 4 . 2 
+        . 4 2 5 2 2 5 2 2 2 2 5 5 4 4 . 
+        . 4 2 5 2 5 2 2 4 4 4 4 5 4 4 . 
+        . 4 2 2 2 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 2 5 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 2 5 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 2 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 5 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, princess, -100, 0)
+    pause(500)
+})
+forever(function () {
+    palla_di_fuoco = sprites.createProjectileFromSprite(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 2 2 2 2 4 4 4 4 4 2 2 . 2 
+        . . 4 2 2 2 2 2 2 2 1 1 4 4 . . 
+        . . 2 5 5 2 2 5 2 2 1 1 5 4 . 2 
+        . 4 2 5 2 2 5 2 2 2 2 5 5 4 4 . 
+        . 4 2 5 2 5 2 2 4 4 4 4 5 4 4 . 
+        . 4 2 2 2 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 2 5 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 2 5 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 2 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 5 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, princess, -100, 50)
+    pause(500)
+})
+forever(function () {
+    palla_di_fuoco = sprites.createProjectileFromSprite(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 2 2 2 2 4 4 4 4 4 2 2 . 2 
+        . . 4 2 2 2 2 2 2 2 1 1 4 4 . . 
+        . . 2 5 5 2 2 5 2 2 1 1 5 4 . 2 
+        . 4 2 5 2 2 5 2 2 2 2 5 5 4 4 . 
+        . 4 2 5 2 5 2 2 4 4 4 4 5 4 4 . 
+        . 4 2 2 2 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 2 5 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 2 5 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 2 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 5 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, princess, 50, 50)
+    pause(500)
+})
+forever(function () {
+    palla_di_fuoco = sprites.createProjectileFromSprite(img`
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . 4 4 2 2 2 2 2 . . . 
+        . . 2 . 4 4 4 5 5 4 2 2 . . . 2 
+        . . . 2 2 2 2 4 4 4 4 4 2 2 . 2 
+        . . 4 2 2 2 2 2 2 2 1 1 4 4 . . 
+        . . 2 5 5 2 2 5 2 2 1 1 5 4 . 2 
+        . 4 2 5 2 2 5 2 2 2 2 5 5 4 4 . 
+        . 4 2 5 2 5 2 2 4 4 4 4 5 4 4 . 
+        . 4 2 2 2 2 2 4 4 4 4 4 4 4 4 2 
+        2 4 2 2 5 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 2 5 2 2 4 2 2 4 2 4 . . 
+        . . 4 2 2 2 2 2 4 4 4 2 4 4 . 2 
+        . . . 4 2 2 2 2 2 2 2 2 4 2 . . 
+        . 2 . 2 4 4 2 2 5 2 4 4 . . 2 2 
+        . . . . . . 4 4 4 4 . . . . 2 . 
+        . . . . . . . . . . 2 . . . . . 
+        `, princess, -100, -50)
+    pause(500)
 })
