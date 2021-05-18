@@ -737,7 +737,7 @@ function random_ghost15 () {
     }
 }
 sprites.onOverlap(SpriteKind.pro1, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.fire, 500)
+    otherSprite.destroy()
     info.changeScoreBy(1)
 })
 function random_ghost10 () {
@@ -1368,7 +1368,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile23`, function (sprite, 
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
     if (true) {
-        princess.follow(arthur)
+    	
     } else {
     	
     }
@@ -1544,11 +1544,6 @@ ghost12.follow(arthur)
 ghost13.follow(arthur)
 ghost14.follow(arthur)
 ghost15.follow(arthur)
-game.onUpdate(function () {
-    if (ghost.overlapsWith(arthur)) {
-    	
-    }
-})
 game.onUpdateInterval(1000, function () {
     ghost.setVelocity(randint(-70, 70), randint(-50, 50))
     ghost2.setVelocity(randint(-70, 70), randint(-50, 50))
