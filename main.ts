@@ -350,7 +350,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile.startEffect(effects.fire)
 })
 function set_arthur () {
-    info.setLife(3333)
+    info.setLife(15)
     arthur = sprites.create(img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -589,10 +589,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . . . . . . . . . . . 
             `)
     }
-})
-sprites.onOverlap(SpriteKind.pdf, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-    scene.cameraShake(4, 500)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -1058,6 +1054,8 @@ function random_ghost5 () {
     }
 }
 sprites.onDestroyed(SpriteKind.boss, function (sprite) {
+    pause(1000)
+    game.showLongText("good job you kill the princess", DialogLayout.Bottom)
     game.over(true, effects.starField)
 })
 function random_ghost2 () {
@@ -1248,10 +1246,6 @@ function random_ghost7 () {
         ghost7.vx += -50
     }
 }
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
-    otherSprite.destroy()
-    info.changeScoreBy(1)
-})
 function random_ghost3 () {
     ghost3 = sprites.create(img`
         ........................
@@ -1342,7 +1336,7 @@ function random_ghost8 () {
     }
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy()
+    otherSprite.destroy(effects.fire, 500)
     info.changeScoreBy(1)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile23`, function (sprite, location) {
@@ -1518,6 +1512,14 @@ ghost12.follow(arthur)
 ghost13.follow(arthur)
 ghost14.follow(arthur)
 ghost15.follow(arthur)
+game.onUpdate(function () {
+    if (palla_di_fuoco.overlapsWith(arthur)) {
+        info.changeLifeBy(-1)
+        scene.cameraShake(4, 500)
+    } else if (projectile.overlapsWith(princess)) {
+        princess.destroy(effects.fire, 500)
+    }
+})
 game.onUpdateInterval(1000, function () {
     ghost.setVelocity(randint(-70, 70), randint(-50, 50))
     ghost2.setVelocity(randint(-70, 70), randint(-50, 50))

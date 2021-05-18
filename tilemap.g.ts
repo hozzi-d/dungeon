@@ -55,11 +55,13 @@ namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const tile26 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
-    export const tile27 = image.ofBuffer(hex``);
+    export const tile30 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile29 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile28 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
-    export const tile29 = image.ofBuffer(hex``);
+    export const tile27 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -214,8 +216,46 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, [myTiles.transparency16,myTiles.tile21], TileScale.Sixteen);
+            case "level5":
+            case "level5":return tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, [myTiles.transparency16], TileScale.Sixteen);
+            case "level6":
+            case "level6":return tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, [myTiles.transparency16], TileScale.Sixteen);
             case "level3":
-            case "level3":return tiles.createTilemap(hex`3a003c002b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b0607070707072828282828282828082b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b06070707312b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041f1f1f1f1f1f1f1f1f1f1f1f1f102b2b2b2b2b2b2b2b2b06070707070707070707082b2b2b041e1e1e24312b2b2b2b2b2b2b2b2b2b2b2b2b2b041f1f1f1f291f1d1f1f211f1f1f102b2b2b2b2b2b2b2b2b04202020202020202020092b2b2b041e201e1e240707070707082b2b2b2b2b2b2b2b041f1f262721210c1f1f2627211f102b2b2b2b2b2b2b2b2b0420201d20201e202120092b2b2b041e20201e1e1e1e1e1d1e092b2b2b2b2b2b2b2b041f1f242a1f1f1f1f1f242a1f1f240707070707070707072a20201e202020202020240707072a1e20203a202020201d1e092b2b2b2b2b2b2b2b041f211f1f1f201f1f1f1f201f1f1f0a0a0a0a0a0a0a0a0a0c202020201e202020200c2c2c2d1e1d202020202020201d3b092b2b2b2b2b2b2b2b041f1f1d0c1f0c391f291f1d0c1f1f0a0a0a0a0a0a0a0a0a0c2020202020202020200c2c2c2d1e1d20202020203a201d1d092b2b2b2b2b2b2b2b041f1f21211f201f1f201f1f1f1f260202020202020202022720201e2020201e202026020202271e202020202020201d1e092b2b2b2b2b2b2b2b041f1f26271f1f1f1f1f26271f1f102b2b2b2b2b2b2b2b2b04202020202020201d20102b2b2b041e20201e1e1e1e1e1d1e092b2b2b2b2b2b2b2b041f29242a211f1f1f0c242a1f1f102b2b2b2b2b2b2b2b2b04201e20202020212020102b2b2b041e203a1e260202022f02302b2b2b2b2b2b2b2b041f1f1f1f1f1f1f1f1f1f1f1f1f102b2b2b2b2b2b2b2b2b01020202020202020202032b2b2b041e1e1e26302b2b2b2b2b2b2b2b2b2b2b2b2b2b041f1f1f1f1f1f0c1f1f1f1f1f1f102b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b01020202302b2b2b2b2b2b2b2b2b2b2b2b2b2b2b0102020202270c380c2602020202032b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b06070707072a0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041d1d1d0c0c0a0c0c092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041d0c0c0a0a0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041d0a1d0d07070707092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041d1d1d0c0c0a0a0a092b2b2b2b2b060707070707070d070d070707070707082b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a1d0a1d0c0a0c0a092b2b2b2b2b050a0a0a0a0a0a0a0a0a0a0a0a0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a0a201d0a0a0a0a092b2b2b2b2b050a0a250a0a0a1d0a0a0a0a1d0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b04070707070d0c0c0a092b2b2b2b2b040a0a0a0b0b0a0a0b250a0a0a0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a1d0a1d0c0a0c0a2407070707070f0a0c0a2602020202020202270a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a0a1d1d0a0a380a252525252538040a0a0a093636363636363604250a0a0e2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a0a0a0a200a0a0c0a0a0a0c0a0c040a1d0a0936363636363636040a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b0102020202274026020202020202020f0a0a0a0936363636363636040c0a0a0e2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b043f092b2b2b2b2b2b2b040a0a0b2407070707070836040a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b040a0a0c0a0a25250b0b0936040a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b040a0a0a0a0a0a380c0c09360425250a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b040a0a0a250a0c0a0a0a0936040a370a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b0102020202023e3f0a3d020202020202032b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b2b2b2b2b2b2b043f0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b043c092b2b2b2b2b2b2b2b2b2b2b2b2b043f0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b0102032b2b2b2b2b2b2b2b2b2b2b2b2b043f0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b043f0a102b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b043f0a102b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b12111111323f0c3311111111132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1232181d1d1d1d1d1d1d1d1d1833132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1232181d1d1d0c1d1d1d1d0c1d1d1833132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1232181d1d1d1e1d1d1d211d1d1e1d1d1833132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1232181d1d1d1d1d1d1d1d1d1d1d1d1d1d1d1833132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1232181d1d1d1d1d1d121111111111112e1111111111132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b14231d1d1d1e0c1d1d141717171a152220141a1a1a1a152b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b141d211d1d1d1d1d1d141717171a151d1d141a1a1a1a152b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b141d1d1d1d211d1d1d141717171a151d1d141a1a1a1a152b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b141d1d1e1d0c1d1d1d1b16161616191d1d1b16161616152b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b351c1d1d1d1e1d1d1d0c1d1d1d1d1d1d1d1d1d1c34192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b351c1d1d0c1d1d1d1f1d0c1d1d201d1d1d1c34192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b351c1d1d1d201d1d1d1d1f0c1d0c1d1c34192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b351c1d1d1d1d1d1f1d1d1d1d1d1c34192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b351c1d1d1d1d1d1d1d1d1d1c34192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b1616161616161616161616192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b`, img`
+            case "level3":return tiles.createTilemap(hex`3a003c002b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b0607074307072843282828432828082b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b06074307302b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041f1f1f1f1f1f1f1f1f1f1f1f1f102b2b2b2b2b2b2b2b2b06070743070707430707082b2b2b041e1e1e24302b2b2b2b2b2b2b2b2b2b2b2b2b2b401f1f1f1f291f1d1f1f211f1f1f422b2b2b2b2b2b2b2b2b04202020202020202020092b2b2b041e201e1e240743074307082b2b2b2b2b2b2b2b041f1f262721210c1f1f2627211f102b2b2b2b2b2b2b2b2b0420201d20201e202120092b2b2b041e20201e1e1e1e1e1d1e092b2b2b2b2b2b2b2b041f1f242a1f1f1f1f1f242a1f1f240707430707430707072a20201e202020202020240743072a1e202039202020201d1e092b2b2b2b2b2b2b2b041f211f1f1f201f1f1f1f201f1f1f0a0a0a0a0a0a0a0a0a0c202020201e202020200c2c2c2d1e1d202020202020201d3a092b2b2b2b2b2b2b2b041f1f1d0c1f0c381f291f1d0c1f1f0a0a0a0a0a0a0a0a0a0c2020202020202020200c2c2c2d1e1d202020202039201d1d092b2b2b2b2b2b2b2b401f1f21211f201f1f201f1f1f1f260202020202020202022720201e2020201e202026020202271e202020202020201d1e092b2b2b2b2b2b2b2b041f1f26271f1f1f1f1f26271f1f422b2b2b2b2b2b2b2b2b04202020202020201d20102b2b2b041e20201e1e1e1e1e1d1e092b2b2b2b2b2b2b2b041f29242a211f1f1f0c242a1f1f102b2b2b2b2b2b2b2b2b04201e20202020212020102b2b2b041e20391e2602410241022f2b2b2b2b2b2b2b2b401f1f1f1f1f1f1f1f1f1f1f1f1f102b2b2b2b2b2b2b2b2b01020241020202410202032b2b2b041e1e1e262f2b2b2b2b2b2b2b2b2b2b2b2b2b2b041f1f1f1f1f1f0c1f1f1f1f1f1f102b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b010241022f2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b0102020202270c370c2602024102032b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b06070707072a0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041d1d1d0c0c0a0c0c092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041d0c0c0a0a0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b041d0a1d0d07070707092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b401d1d1d0c0c0a0a0a092b2b2b2b2b064307070707070d070d070707070743082b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a1d0a1d0c0a0c0a092b2b2b2b2b050a0a0a0a0a0a0a0a0a0a0a0a0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a0a201d0a0a0a0a092b2b2b2b2b050a0a250a0a0a1d0a0a0a0a1d0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b04070707070d0c0c0a092b2b2b2b2b040a0a0a0b0b0a0a0b250a0a0a0a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a1d0a1d0c0a0c0a2443070707070f0a0c0a2602020202020202270a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a0a1d1d0a0a370a252525252537040a0a0a093535353535353504250a0a0e2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040a0a0a0a200a0a0c0a0a0a0c0a0c040a1d0a0935353535353535040a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b0102410202273f26020202410202020f0a0a0a0935353535353535040c0a0a0e2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b043e092b2b2b2b2b2b2b040a0a0b2407070707070835040a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b040a0a0c0a0a25250b0b0935040a0a0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b040a0a0a0a0a0a370c0c09350425250a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b040a0a0a250a0c0a0a0a0935040a360a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b0102024102023d3e0a3c020202020202032b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b040c092b2b2b2b2b2b2b2b2b2b2b2b2b043e0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b043b092b2b2b2b2b2b2b2b2b2b2b2b2b043e0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b0102032b2b2b2b2b2b2b2b2b2b2b2b2b043e0a092b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b043e0a102b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b043e0a102b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b12111111313e0c3211111111132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1231181d1d1d1d1d1d1d1d1d1832132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1231181d1d1d0c1d1d1d1d0c1d1d1832132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1231181d1d1d1e1d1d1d211d1d1e1d1d1832132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1231181d1d1d1d1d1d1d1d1d1d1d1d1d1d1d1832132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1231181d1d1d1d1d1d121111111111112e1111111111132b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b14231d1d1d1e0c1d1d141717171a152220141a1a1a1a152b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b141d211d1d1d1d1d1d141717171a151d1d141a1a1a1a152b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b141d1d1d1d211d1d1d141717171a151d1d141a1a1a1a152b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b141d1d1e1d0c1d1d1d1b16161616191d1d1b16161616152b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b341c1d1d1d1e1d1d1d0c1d1d1d1d1d1d1d1d1d1c33192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b341c1d1d0c1d1d1d1f1d0c1d1d201d1d1d1c33192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b341c1d1d1d201d1d1d1d1f0c1d0c1d1c33192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b341c1d1d1d1d1d1f1d1d1d1d1d1c33192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b341c1d1d1d1d1d1d1d1d1d1c33192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b1b1616161616161616161616192b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b`, img`
 ..........................................................
 ..........................................................
 ..........................................................
@@ -276,45 +316,7 @@ namespace myTiles {
 .......................222.........222....................
 ........................2222222222222.....................
 ..........................................................
-`, [myTiles.transparency16,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterSouth0,sprites.dungeon.greenOuterSouthWest,sprites.dungeon.greenOuterWest1,sprites.dungeon.greenOuterWest0,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.greenOuterNorth0,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterEast0,sprites.dungeon.floorLight4,sprites.dungeon.floorLight5,sprites.dungeon.floorMixed,sprites.dungeon.greenOuterNorth2,sprites.dungeon.greenOuterEast2,sprites.dungeon.greenOuterWest2,sprites.dungeon.greenOuterEast1,sprites.dungeon.purpleOuterNorth1,sprites.dungeon.purpleOuterNorthWest,sprites.dungeon.purpleOuterNorthEast,sprites.dungeon.purpleOuterWest1,sprites.dungeon.purpleOuterEast0,sprites.dungeon.purpleOuterSouth1,sprites.dungeon.darkGroundSouthWest1,sprites.dungeon.purpleOuterNorth2,sprites.dungeon.purpleOuterSouthWest,sprites.dungeon.darkGroundCenter,sprites.dungeon.purpleOuterSouthEast,sprites.dungeon.purpleOuterSouth2,sprites.dungeon.floorDark0,sprites.dungeon.floorDarkDiamond,sprites.dungeon.floorDark4,sprites.dungeon.floorDark1,sprites.dungeon.floorDark5,sprites.dungeon.stairSouth,sprites.dungeon.chestClosed,sprites.dungeon.greenInnerSouthWest,sprites.dungeon.floorLightMoss,sprites.dungeon.greenInnerNorthWest,sprites.dungeon.greenInnerNorthEast,sprites.dungeon.greenOuterNorth1,sprites.dungeon.floorDark3,sprites.dungeon.greenInnerSouthEast,myTiles.tile1,sprites.dungeon.floorLight0,sprites.dungeon.stairLarge,sprites.dungeon.purpleSwitchUp,myTiles.tile5,myTiles.tile6,myTiles.tile7,sprites.dungeon.purpleInnerSouthEast,sprites.dungeon.purpleInnerSouthWest,sprites.dungeon.purpleInnerNorthWest,sprites.dungeon.purpleInnerNorthEast,sprites.dungeon.darkGroundSouth,myTiles.tile3,myTiles.tile15,myTiles.tile16,sprites.dungeon.floorLight3,sprites.dungeon.stairLadder,myTiles.tile24,myTiles.tile10,myTiles.tile11,myTiles.tile25,sprites.dungeon.doorOpenNorth], TileScale.Sixteen);
-            case "level5":
-            case "level5":return tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, [myTiles.transparency16], TileScale.Sixteen);
-            case "level6":
-            case "level6":return tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, [myTiles.transparency16], TileScale.Sixteen);
+`, [myTiles.transparency16,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterSouth0,sprites.dungeon.greenOuterSouthWest,sprites.dungeon.greenOuterWest1,sprites.dungeon.greenOuterWest0,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.greenOuterNorth0,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterEast0,sprites.dungeon.floorLight4,sprites.dungeon.floorLight5,sprites.dungeon.floorMixed,sprites.dungeon.greenOuterNorth2,sprites.dungeon.greenOuterEast2,sprites.dungeon.greenOuterWest2,sprites.dungeon.greenOuterEast1,sprites.dungeon.purpleOuterNorth1,sprites.dungeon.purpleOuterNorthWest,sprites.dungeon.purpleOuterNorthEast,sprites.dungeon.purpleOuterWest1,sprites.dungeon.purpleOuterEast0,sprites.dungeon.purpleOuterSouth1,sprites.dungeon.darkGroundSouthWest1,sprites.dungeon.purpleOuterNorth2,sprites.dungeon.purpleOuterSouthWest,sprites.dungeon.darkGroundCenter,sprites.dungeon.purpleOuterSouthEast,sprites.dungeon.purpleOuterSouth2,sprites.dungeon.floorDark0,sprites.dungeon.floorDarkDiamond,sprites.dungeon.floorDark4,sprites.dungeon.floorDark1,sprites.dungeon.floorDark5,sprites.dungeon.stairSouth,sprites.dungeon.chestClosed,sprites.dungeon.greenInnerSouthWest,sprites.dungeon.floorLightMoss,sprites.dungeon.greenInnerNorthWest,sprites.dungeon.greenInnerNorthEast,sprites.dungeon.greenOuterNorth1,sprites.dungeon.floorDark3,sprites.dungeon.greenInnerSouthEast,myTiles.tile1,sprites.dungeon.floorLight0,sprites.dungeon.stairLarge,sprites.dungeon.purpleSwitchUp,myTiles.tile6,myTiles.tile7,sprites.dungeon.purpleInnerSouthEast,sprites.dungeon.purpleInnerSouthWest,sprites.dungeon.purpleInnerNorthWest,sprites.dungeon.purpleInnerNorthEast,sprites.dungeon.darkGroundSouth,myTiles.tile3,myTiles.tile15,myTiles.tile16,sprites.dungeon.floorLight3,sprites.dungeon.stairLadder,myTiles.tile24,myTiles.tile10,myTiles.tile11,myTiles.tile25,sprites.dungeon.doorOpenNorth,myTiles.tile27,myTiles.tile28,myTiles.tile29,myTiles.tile30], TileScale.Sixteen);
         }
         return null;
     })
@@ -374,12 +376,14 @@ namespace myTiles {
             case "tile25":return tile25;
             case "myTile24":
             case "tile26":return tile26;
-            case "myTile25":
-            case "tile27":return tile27;
-            case "myTile26":
-            case "tile28":return tile28;
+            case "myTile28":
+            case "tile30":return tile30;
             case "myTile27":
             case "tile29":return tile29;
+            case "myTile26":
+            case "tile28":return tile28;
+            case "myTile25":
+            case "tile27":return tile27;
         }
         return null;
     })
