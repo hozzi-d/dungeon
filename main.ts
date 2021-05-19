@@ -350,7 +350,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile.startEffect(effects.fire)
 })
 function set_arthur () {
-    info.setLife(15)
+    info.setLife(30)
     arthur = sprites.create(img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
